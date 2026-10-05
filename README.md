@@ -4,7 +4,6 @@
 [![POSIX Compliant](https://img.shields.io/badge/Standard-POSIX%20VFS-orange.svg)](https://pubs.opengroup.org/onlinepubs/9699919799/)
 [![Tests](https://img.shields.io/badge/Tests-100%25%20Passing-brightgreen.svg)]()
 [![Architecture](https://img.shields.io/badge/Architecture-6--Stage%20Modular%20Design-purple.svg)]()
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 An enterprise-grade, crash-consistent **Copy-on-Write (CoW) Virtual Filesystem Engine** built from the ground up in modern **C++20**. CowFS features POSIX Virtual Filesystem (VFS) emulation, cache-aligned memory hierarchies, zero-copy file cloning, instantaneous $O(1)$ point-in-time snapshotting, content-addressable block deduplication, and atomic dual-superblock shadow-commit crash recovery.
 
@@ -295,8 +294,3 @@ The **Copy-on-Write Virtual Filesystem Engine (CowFS)** provides a high-performa
 2. **ACID Crash Consistency Without Journal Overhead**: The Dual-Superblock shadow-commit protocol guarantees that simulated power failures or crashes never corrupt data. Changes only take effect once dirty blocks are flushed and the generation pointer is atomically updated with valid CRC32-C verification.
 3. **Hardware & Architecture Optimization**: The integration of 64-byte cache line alignment (`alignas(64)`) removes multi-core false sharing, 4KB page alignment ensures zero MMU/TLB translation penalties, and single-cycle CPU bitwise intrinsics (`std::countr_zero`) deliver constant-time block allocation.
 4. **End-to-End POSIX Compatibility**: The 6-stage architecture provides a complete, thread-safe POSIX VFS layer with an interactive CLI shell, thorough verification suites, and comprehensive developer documentation.
-
----
-
-## 📜 License
-Distributed under the MIT License.
